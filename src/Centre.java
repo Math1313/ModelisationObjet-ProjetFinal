@@ -1,8 +1,12 @@
 import java.time.LocalDate;
 import java.util.*;
+import Observer.Subject;
+import Observer.Observer;
 
-public class Centre {
+public class Centre implements Subject {
+
     private ArrayList<Chambre> listeChambres = new ArrayList<>();
+    private ArrayList<Observer> listeObservers = new ArrayList<>();
 
     public Centre()
     {
@@ -22,4 +26,27 @@ public class Centre {
         return this.listeChambres;
     }
 
+    public void ajouterDisponibilite(int numeroChambre, LocalDate dateDebut, LocalDate dateFin, int prix)
+    {
+        this.listeChambres.get(numeroChambre).ajouterDisponibilite(dateDebut, dateFin, prix);
+        this.notifyObservers();
+    }
+
+    //OBSERVER DESIGN PATTERN
+    @Override
+    public void addObserver(Observer observer) {
+        listeObservers.add(observer);
+    }
+
+    @Override
+    public void notifyObservers() {
+        for(Observer observer : listeObservers)
+        {
+            observer.update("Nouvelle disponibilité.");
+        }
+    }
+    @Override
+    public void removeObserver(Observer observer) {
+        listeObservers.remove(observer);
+    }
 }
