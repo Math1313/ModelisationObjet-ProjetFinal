@@ -29,7 +29,7 @@ public class Centre implements Subject {
     public void ajouterDisponibilite(int numeroChambre, LocalDate dateDebut, LocalDate dateFin, int prix)
     {
         this.listeChambres.get(numeroChambre).ajouterDisponibilite(dateDebut, dateFin, prix);
-        this.notifyObservers();
+        notifyObservers();
     }
 
     //OBSERVER DESIGN PATTERN

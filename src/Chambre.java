@@ -15,6 +15,7 @@ public class Chambre {
             this.prix = prix;
         }
     }
+
     private ArrayList<Disponibilite> listeDisponibilite = new ArrayList<>();
     int capacite;
     int numero;
@@ -49,5 +50,4 @@ public class Chambre {
             System.out.println(disponibilite.dateFin);
         }
     }
-
 }
